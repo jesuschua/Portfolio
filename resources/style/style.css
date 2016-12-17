@@ -55,6 +55,18 @@ body{
 	text-align: center;
 	}
 
+.portfolio_main_title{
+	color: white;
+	font-size: 5em;
+	text-align: center;
+	}
+
+.portfolio_sub_title{
+	color: "#FF5800";
+	font-size: 4em;
+	text-align: center;
+	}
+
 .highcont{
 	background: rgb(51,51,51);
 	padding: 5px;
