@@ -1,7 +1,7 @@
 body{
     font-family: Segoe UI, sans-serif;
-	background: rgb(51,51,51);
-    color: #fff;
+	background: #ffffff;
+    color: #000000;
     padding:50px;
 }
 
@@ -9,7 +9,7 @@ body{
 {
 	font-family: Segoe UI, sans-Serif;
 	font-size: 1em;
-	background: #fff;
+	background: #FFFF00;
 	margin: 45px;
 	width: 600px;
 	border-collapse: collapse;
@@ -20,7 +20,7 @@ body{
 	font-size: 14px;
 	font-weight: bold;
 	padding: 10px 8px;
-	border-bottom: 2px solid #6678b1;
+	border-bottom: 2px solid #FFFF00;
 	text-align: left;
 }
 #hor-minimalist-a td
@@ -29,7 +29,7 @@ body{
 }
 #hor-minimalist-a tbody tr:hover td
 {
-	color: #FF5800;
+	color: #FFFF00;
 }
 
 .workdate{
@@ -56,7 +56,7 @@ body{
 	}
 
 .highcont{
-	background: rgb(51,51,51);
+	background: #000000;
 	padding: 5px;
 	}
 	
@@ -536,4 +536,16 @@ input[type=text] {
 .line:focus {
     outline: none;
     border-color: #51CBEE;
+}
+
+#rotating-item-wrapper {
+	position: relative;
+	width: 720px;
+	height: 405px;
+}
+.rotating-item {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
