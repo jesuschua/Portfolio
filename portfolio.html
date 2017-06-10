@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="resources/style/jquery-ui.css" />
   <script src="resources/script/jquery-1.9.1.js"></script>
   <script src="resources/script/jquery-ui.js"></script>
+  <!-- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1'></script>   -->
+  <script type='text/javascript' src='resources/script/infinite-rotator.js'></script>
   <link rel="stylesheet" href="resources/style/style.css" />
   <script>
   $(function() {
@@ -26,11 +28,20 @@
 
 <div id="tabs">
   <ul>
+	<li><a href="#tabs-0">Welcome</a></li>
     <li><a href="#tabs-1">Resumé</a></li>
     <li><a href="#tabs-2">Work samples</a></li>
     <li><a href="#tabs-3">Contact details</a></li>
   </ul>
 
+  <div id="tabs-0">
+		<div id="rotating-item-wrapper">
+			<img src="resources/images/banner1.png" alt="" class="rotating-item" />
+			  <img src="resources/images/banner2.png" alt="" class="rotating-item" />
+			  <img src="resources/images/banner3.png" alt="" class="rotating-item" />  
+		</div>
+  </div>
+  
   <div id="tabs-1">
   <div>
   <div class = "highcont"><p class="workplace">Main Competencies</p></div>
