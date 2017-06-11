@@ -553,6 +553,8 @@ input[type=text] {
 	position: relative;
 	width: 720px;
 	height: 405px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .rotating-item {
 	display: none;
