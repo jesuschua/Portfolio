@@ -48,7 +48,18 @@ body{
 	color: white;
 	}
 
+.Mainname{
+	color: black;
+	font-size: 1.7em;
+	text-align: center;
+	}
 
+.Maintitle{
+	color: black;
+	font-size: 1.2em;
+	text-align: center;
+	}
+	
 .workplace{
 	color: white;
 	font-size: 1.25em;
