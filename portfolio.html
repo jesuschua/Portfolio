@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <title>Portfolio</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="resources/script/d3.min.js"></script>
+  <script type="text/javascript" src="resources/script/c3.min.js"></script>
+  <link href="resources/style/c3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="resources/style/jquery-ui.css" />
   <script src="resources/script/jquery-1.9.1.js"></script>
   <script src="resources/script/jquery-ui.js"></script>
@@ -19,9 +23,86 @@
     $( "#tabs" ).tabs();
   });
   </script>
+  <script>
+    // ID of the Google Spreadsheet
+    var spreadsheetID = "1Veb2vl5EtgAjxVQ9eU-o-RSrgiOMmxUxAh5mQADQP-0";
+
+    // Make sure it is public or set to Anyone with link can view
+    var url1 = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+
+    // make JSON call to Google Data API
+    $.getJSON(url1, function(data) {
+      var arr_yearlabel = []
+      var arr_percentfoodutil = ['% Food Utilization']
+      var arr_foodutil = ['Food Utilization']
+      var arr_nonfoodutil = ['Non-Food Utilization']
+      var arr_grosupply = ['Gross Supply']
+      for (var j = 0; j < data.feed.entry.length; j++){
+        arr_yearlabel.push(data.feed.entry[j].gsx$year.$t)
+        arr_percentfoodutil.push(data.feed.entry[j].gsx$percentfoodutilization.$t)
+        arr_foodutil.push(data.feed.entry[j].gsx$foodutilization.$t)
+        arr_nonfoodutil.push(data.feed.entry[j].gsx$nonfoodutilization.$t)
+        arr_grosupply.push(data.feed.entry[j].gsx$grosssupply.$t)
+      }
+      //console.log(data.feed.entry);
+      //console.log(arr_yearlabel);
+
+      var chart = c3.generate({
+          size:{height: 520, width: 1200},
+          bindto: '#chart',
+          data: {
+            //x: arr_yearlabel,
+            columns: [
+              arr_foodutil,
+              arr_nonfoodutil,
+              arr_grosupply,
+              arr_percentfoodutil,
+            ],
+            type: 'bar',
+            groups: [
+            ['Food Utilization', 'Non-Food Utilization']
+            ],
+            axes: {
+              '% Food Utilization': 'y2',
+              'Food Utilization': 'y',
+              'Non-Food Utilization': 'y',
+              'Gross Supply': 'y',
+            },
+            types: {
+              '% Food Utilization': 'line',
+              'Food Utilization': 'bar',
+              'Non-Food Utilization': 'bar',
+              'Gross Supply': 'bar'// ADD
+            }
+          },
+          axis: {
+            x: {
+              type: 'category',
+              categories: arr_yearlabel,
+              },
+            y: {
+              label: {
+                text: 'Metric Tons',
+                position: 'outer-middle'
+              }
+            },
+            y2: {
+              show: true,
+              min: 10,
+              max: 90,
+              label: {
+                text: 'Percent Utilization',
+                position: 'outer-middle'
+              }
+            }
+          }
+      });
+    });
+
+  </script>
 </head>
 <body>
-	
+
 <p class = "Mainname">Jesus Hernandez Chua Jr</p>
 <p class = "Maintitle">Business Analyst/Technical Writer</p>
 <hr color="#FF5800">
@@ -37,10 +118,10 @@
 		<div id="rotating-item-wrapper">
 			<img src="resources/images/banner1.png" alt="" class="rotating-item" />
 			  <img src="resources/images/banner2.png" alt="" class="rotating-item" />
-			  <img src="resources/images/banner3.png" alt="" class="rotating-item" />  
+			  <img src="resources/images/banner3.png" alt="" class="rotating-item" />
 		</div>
   </div>
-  
+
   <div id="tabs-1">
   <div>
   <div class = "highcont"><p class="workplace">Main Competencies</p></div>
@@ -52,14 +133,14 @@
 			<li>Knowledgeable in the current tools and philosophies of development and technical communication</li>
 		</ul>
 	</div>
-	<div id="accordion1">	
+	<div id="accordion1">
 	  <h3>Roles and work experience</h3>
 	  <div>
 	  	<div id="accordionA">
 		  <h3>Global Process Managers, Inc.</h3>
 			<div>
-				<div class = "highcont">		
-				<p class="workplace">Business Process Architect</p> 
+				<div class = "highcont">
+				<p class="workplace">Business Process Architect</p>
 				<p class="workdate">February 2015 – Present</p>
 				</div>
 				<p>Responsibilities:</p>
@@ -75,8 +156,8 @@
 			</div>
 			<h3>Accenture Manila Delivery Center</h3>
 			<div>
-				<div class = "highcont">		
-				<p class="workplace">Consultant Technical Writer</p> 
+				<div class = "highcont">
+				<p class="workplace">Consultant Technical Writer</p>
 				<p class="workdate">September 2012 – February 2015</p>
 				</div>
 				<p>Responsibilities:</p>
@@ -92,8 +173,8 @@
 			</div>
 			<h3>Misys Philippines</h3>
 			<div>
-				<div class = "highcont">		
-				<p class="workplace">Senior Technical Writer</p> 
+				<div class = "highcont">
+				<p class="workplace">Senior Technical Writer</p>
 				<p class="workdate">July 2011 – September 2012</p>
 				</div>
 			    <p>Responsibilities:</p>
@@ -106,8 +187,8 @@
 			</div>
 			<h3>ESS Manufacturing Company Incorporated (EMCI)</h3>
 			<div>
-		  	    <div class = "highcont">		
-				<p class="workplace">Senior Technical Writer for Electronic Arts Project</p> 
+		  	    <div class = "highcont">
+				<p class="workplace">Senior Technical Writer for Electronic Arts Project</p>
 				<p class="workdate">July 2009 – July 2011</p>
 				</div>
 				<p>Responsibilities:</p>
@@ -120,8 +201,8 @@
 			</div>
 			<h3>Lawson Philippines Solutions and Services Center (PSSC)</h3>
 			<div>
-	  	        <div class = "highcont">		
-				<p class="workplace">Technical Writer</p> 
+	  	        <div class = "highcont">
+				<p class="workplace">Technical Writer</p>
 				<p class="workdate">August 2007 – July 2009</p>
 	            </div>
 			    <p>Responsibilities:</p>
@@ -135,7 +216,7 @@
 			    <li>Accomplished administrative tasks such as quality control monitoring and statistical reporting.</li>
 			    <li>Achieved the highest performance evaluation rating among Knowledge Base peers in TalentView  (Lawson’s internal 360-degree rating system).</li>
 			    <li>Received the Lawson Outstanding Contribution award and the Eureka award related to documentation productivity and innovation.</li>
-			    </ul>				
+			    </ul>
 			</div>
 		</div>
 	  </div>
@@ -172,7 +253,7 @@
 	  <h3>Software and Concepts Skill Set</h3>
 	  <div id="contentBox" style="margin:0px auto;">
     	 <div id="column1" style="float:left; margin:0; width:33%">
-		 <p>Publishing</p>	  
+		 <p>Publishing</p>
 		 <ul>
 			<li>MadCap Flare</li>
 			<li>Adobe Robohelp</li>
@@ -213,17 +294,19 @@
 	<h3>Data Gathering, Analysis, and Visualization</h3>
 	  <div>
 	  <div class = "highcont">
-			<p class="workplace">Rice Consumption Analysis</p></div>
+			<p class="workplace">Philippine Rice Consumption Analysis Interactive Graph</p></div>
 		<ul>
 			<p>Large datasets can be compiled, analyzed, and presented to help organizations make more informed decisions. In this example, I use publicly-available data to present the historical trend of rice consumption in the Philippines.</p>
-			<p>Visualized data</p>
 			<div>
-				<img src="resources/images/graph1.png" width="70%">
+				<div id="chart" width="auto%" align="center" valign="top"></div>
 			</div>
-		<p>Raw data</p>
-			<div>
-				<img src="resources/images/graph1_raw.png" width="70%">
-			</div>
+      <p>I used the following technologies for this graph:</p>
+      <ul>
+        <li>HTML - as a platform for development</li>
+        <li>Javascript - programming language that works with most browsers</li>
+        <li>JSON - as a medium for transporting data from GoogleSheets to the browser</li>
+        <li>C3 and D3 - javascript libraries that enable fast and interactive visualization</li>
+      </ul>
 	  </div>
 	 <h3>Requirements Gathering</h3>
 	  <div>
@@ -233,7 +316,7 @@
 		  <p>This change request represents a typical scenario in any organization. There is a principal project to standardize and merge the intellectual properties and databases of two companies. </p>
 		  <p>As a business process architect, I help divide the principal change into into smaller, focused, and SMART change requests. Notice that all requirements are subdivided into specific categories like UI requirements, Functional requirements, Performance requirements and so on. Notice also that while this specific change request is small in scope, the overview section ties it up with the larger organization-wide change.</p>
 		  <p>Click the image to view the change request document.</p>
-			<div>			
+			<div>
 			<a href="resources/documents/Change Request 001 - Customer Data Migration - Update of Customer Address Fields UI.pdf" target="_blank"><img src="resources/images/banner2.png" width="50%" border="5px" style= "border-color: #FF5800"></a>
 			</div>
 	  </div>
@@ -252,7 +335,7 @@
 			</p>
 			<p><strong>Level of involvement</strong></p>
 			<p>
-			This project required me to be embedded within the development team. I often met and consulted with the following experts:</p> 
+			This project required me to be embedded within the development team. I often met and consulted with the following experts:</p>
 			<ul>
 			<li>Business analysts who provide information about application functionalities. </li>
 			<li>Developers who provide updates on functionality or user interface changes.</li>
@@ -260,7 +343,7 @@
 			</ul>
 			<p><strong>Tools</strong></p>
 			<p>
-			I used the following applications and environments:</p> 
+			I used the following applications and environments:</p>
 			<ul>
 			<li>Robohelp, utilizing custom css to publish the html content into a preliminary Word document.</li>
 			<li>Macro-enabled Microsoft Word template, utilizing custom macros and fields to reformat, re-number, and apply headers and footers to sections, and to conform to company-wide template requirements.</li>
@@ -295,7 +378,7 @@
 		</p>
 		<p><strong>Level of involvement</strong></p>
 			<p>
-			This project required light to medium involvement. Often involving just me and two experts discussing the changes over email.</p> 
+			This project required light to medium involvement. Often involving just me and two experts discussing the changes over email.</p>
 		</div>
 		</td>
 		<td width="auto%" align="center" valign="top">
@@ -322,15 +405,15 @@
 		Let me know if you need samples of my work in this area.
 		</p>
 	  </div>
-	  
+
 	  <h3>About this website</h3>
 	  <div>
 		<p>
-		This website features jQuery accordions nested inside tabs. jQuery UI animations are light-weight, efficient, and relatively easy to implement. It enables the extension of screen real estate while maintaining visual simplicity and order. 
+		This website features jQuery accordions nested inside tabs. jQuery UI animations are light-weight, efficient, and relatively easy to implement. It enables the extension of screen real estate while maintaining visual simplicity and order.
 		</p>
 		<p><strong>Tools</strong></p>
 			<p>
-			I used the following applications and environments:</p> 
+			I used the following applications and environments:</p>
 				<ul>
 				<li>Microsoft Office Suite to create presentations and analyze data.</li>
 				<li>Notepad++ to write HTML code.</li>
