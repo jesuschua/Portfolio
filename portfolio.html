@@ -1,470 +1,496 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>Portfolio</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="resources/script/d3.min.js"></script>
-  <script type="text/javascript" src="resources/script/c3.min.js"></script>
-  <link href="resources/style/c3.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="resources/style/jquery-ui.css" />
-  <script src="resources/script/jquery-1.9.1.js"></script>
-  <script src="resources/script/jquery-ui.js"></script>
-  <!-- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1'></script>   -->
-  <script type='text/javascript' src='resources/script/infinite-rotator.js'></script>
-  <link rel="stylesheet" href="resources/style/style.css" />
-  <script>
-  $(function() {
-    $( "#accordion1,#accordion2,#accordion3,#accordionA,#accordionB" ).accordion({collapsible : true, active : 'none'});
-  });
-  </script>
-  <script>
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
-  </script>
-  <script>
-    // ID of the Google Spreadsheet
-    var spreadsheetID = "1Veb2vl5EtgAjxVQ9eU-o-RSrgiOMmxUxAh5mQADQP-0";
-
-    // Make sure it is public or set to Anyone with link can view
-    var url1 = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-
-    // make JSON call to Google Data API
-    $.getJSON(url1, function(data) {
-      var arr_yearlabel = []
-      var arr_percentfoodutil = ['% Food Utilization']
-      var arr_foodutil = ['Food Utilization']
-      var arr_nonfoodutil = ['Non-Food Utilization']
-      var arr_grosupply = ['Gross Supply']
-      for (var j = 0; j < data.feed.entry.length; j++){
-        arr_yearlabel.push(data.feed.entry[j].gsx$year.$t)
-        arr_percentfoodutil.push(data.feed.entry[j].gsx$percentfoodutilization.$t)
-        arr_foodutil.push(data.feed.entry[j].gsx$foodutilization.$t)
-        arr_nonfoodutil.push(data.feed.entry[j].gsx$nonfoodutilization.$t)
-        arr_grosupply.push(data.feed.entry[j].gsx$grosssupply.$t)
-      }
-      //console.log(data.feed.entry);
-      //console.log(arr_yearlabel);
-
-      var chart = c3.generate({
-          size:{height: 520, width: 1200},
-          bindto: '#chart',
-          data: {
-            //x: arr_yearlabel,
-            columns: [
-              arr_foodutil,
-              arr_nonfoodutil,
-              arr_grosupply,
-              arr_percentfoodutil,
-            ],
-            type: 'bar',
-            groups: [
-            ['Food Utilization', 'Non-Food Utilization']
-            ],
-            axes: {
-              '% Food Utilization': 'y2',
-              'Food Utilization': 'y',
-              'Non-Food Utilization': 'y',
-              'Gross Supply': 'y',
-            },
-            types: {
-              '% Food Utilization': 'spline',
-              'Food Utilization': 'bar',
-              'Non-Food Utilization': 'bar',
-              'Gross Supply': 'spline'// ADD
-            }
-          },
-          axis: {
-            x: {
-              type: 'category',
-              categories: arr_yearlabel,
-              },
-            y: {
-              label: {
-                text: 'Metric Tons',
-                position: 'outer-middle'
-              }
-            },
-            y2: {
-              show: true,
-              min: 10,
-              max: 90,
-              label: {
-                text: 'Percent Utilization',
-                position: 'outer-middle'
-              }
-            }
-          }
-      });
-    });
-
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jesus Chua | IT Analysis & Development</title>
+  
+  <!-- Modern fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Animation library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Visualization libraries -->
+  <script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/c3@0.7.20/c3.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/c3@0.7.20/c3.min.css">
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="resources/style/portfolio-2023.css">
+  
+  <!-- Custom scripts with defer -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script defer src="resources/script/portfolio-2023.js"></script>
 </head>
 <body>
-
-<p class = "Mainname">Jesus Hernandez Chua Jr</p>
-<p class = "Maintitle">IT Analysis and Development Consultant</p>
-<hr color="#FF5800">
-<div id="tabs">
-  <ul>
-	<li><a href="#tabs-0">Welcome</a></li>
-    <li><a href="#tabs-1">Resumé</a></li>
-    <li><a href="#tabs-2">Work samples</a></li>
-    <li><a href="#tabs-3">Demo websites</a></li>
-    <li><a href="#tabs-4">Contact details</a></li>
-  </ul>
-
-  <div id="tabs-0">
-		<div id="rotating-item-wrapper">
-			<img src="resources/images/banner1.png" alt="" class="rotating-item" />
-			  <img src="resources/images/banner2.png" alt="" class="rotating-item" />
-			  <img src="resources/images/banner3.png" alt="" class="rotating-item" />
-		</div>
+  <!-- Animated background elements -->
+  <div class="bg-animation">
+    <div class="bg-animation-shape shape1"></div>
+    <div class="bg-animation-shape shape2"></div>
+    <div class="bg-animation-shape shape3"></div>
   </div>
 
-  <div id="tabs-1">
-  <div>
-  <div class = "highcont"><p class="workplace">Professional Summary</p></div>
-	</div>
-	<div id="accordion1">
-	  <h3>Roles and work experience</h3>
-	  <div>
-	  	<div id="accordionA">
-			<h3>Nobia Denmark A/S</h3>
-			<div>
-				<div class = "highcont">
-				<p class="workplace">IT Consultant</p>
-				<p class="workdate">February 2020 – Present</p>
-				</div>
-				<p>Responsibilities:</p>
-				<ul>
-				 <li>Analysis and estimation of change requests </li> 
-				 <li>Quality assurance scoping and preparation of test environments</li>
-				 <li>Process mapping and monitoring</li>
-				 <li>Online reports generation</li>
-				 <li>2nd level support for incidents and problems</li>
-			</div>
-		  <h3>Global Process Managers, Inc.</h3>
-			<div>
-				<div class = "highcont">
-				<p class="workplace">Business Process Architect</p>
-				<p class="workdate">February 2015 – January 2020</p>
-				</div>
-				<p>Responsibilities:</p>
-				<ul>
-					<li>Explored, Documented, and Clarified change requests received from Nobia Denmark’s IT and Business Departments.</li>
-					<li>Created, updated, and maintained the Sprint and Development documentation including man-hour estimates, sprint items, daily meeting action items and so on.</li>
-					<li>Served as first level go-to person for application functionality inquiries in Manila.</li>
-					<li>Handled application language translation processing.</li>
-					<li>Performed User Acceptance Testing of candidate application builds.</li>
-					<li>Participated in daily meetings for release concerns and updates.</li>
-					<li>Participated in semi-regular meetings about the release of new products from the pipeline.</li>
-				</ul>
-			</div>
-			<h3>Accenture Manila Delivery Center</h3>
-			<div>
-				<div class = "highcont">
-				<p class="workplace">Consultant Technical Writer</p>
-				<p class="workdate">September 2012 – February 2015</p>
-				</div>
-				<p>Responsibilities:</p>
-				<ul>
-					<li>Created high-level to detailed sprint items that serve as work items for the GDM Methods Team in Accenture. Sprint items include time estimates, degree of automation, level of review, and delivery schedule.</li>
-					<li>Produced sprint-related reports such as the sprint plan, schedule, capacity, DoD, and retrospectives, and serves as a liaison between Manila and US teams.</li>
-					<li>Created, updated, and reviewed development methodology and development process documents.</li>
-					<li>Developed video and deck training modules in collaboration with US product owners.</li>
-					<li>Developed and designed Microsoft SharePoint sites.</li>
-					<li>Developed VBA macros for automation of tasks.</li>
-					<li>Functioned as a business analyst for tools development.</li>
-				</ul>
-			</div>
-			<h3>Misys Philippines</h3>
-			<div>
-				<div class = "highcont">
-				<p class="workplace">Senior Technical Writer</p>
-				<p class="workdate">July 2011 – September 2012</p>
-				</div>
-			    <p>Responsibilities:</p>
-			    <ul>
-			    <li>Created documentation plans around the requirements of Misys banking products, this responsibility included recommending the type of documents to be delivered, expected person-hours, documentation tools to be utilized, and the delivery schedule itself.</li>
-			    <li>Coordinated with the development team for technical accuracy and review responsibilities of each document.</li>
-			    <li>Created, updated, and reviewed Misys banking documentation.</li>
-			    <li>Was part of a team of global technical editors that regularly met for documentation quality assurance.</li>
-			    </ul>
-			</div>
-			<h3>ESS Manufacturing Company Incorporated (EMCI)</h3>
-			<div>
-		  	    <div class = "highcont">
-				<p class="workplace">Senior Technical Writer for Electronic Arts Project</p>
-				<p class="workdate">July 2009 – July 2011</p>
-				</div>
-				<p>Responsibilities:</p>
-				<ul>
-				<li>Gathered, interpreted, and organized network information to support the online and multiplayer functionalities of games produced by various Electronic Arts (EA) studios.</li>
-				<li>Initiated periodic document reviews to keep the support documents up to date and at par with current standards.</li>
-				<li>Conducted training and knowledge transfer sessions with other writers on technical and non-technical topics.</li>
-				<li>Attended EA regional IT change management meetings to represent the interests and needs of the documentation team.</li>
-				</ul>
-			</div>
-			<h3>Lawson Philippines Solutions and Services Center (PSSC)</h3>
-			<div>
-	  	        <div class = "highcont">
-				<p class="workplace">Technical Writer</p>
-				<p class="workdate">August 2007 – July 2009</p>
-	            </div>
-			    <p>Responsibilities:</p>
-			    <ul>
-			    <li>Provided analysis, generalization, and documentation of customer cases for publication in the Lawson Knowledge Base system.</li>
-			    <li>Specialized on Supply Chain Management and Procurement cases.</li>
-			    <li>Conducted peer-review of technical articles for quality control.</li>
-			    <li>Implemented revisions to the Lawson Knowledge Base language standards.</li>
-			    <li>Held weekly Post-mortem meetings for quality assurance and group discussions.</li>
-			    <li>Served as officer in charge when manager was on-leave.</li>
-			    <li>Accomplished administrative tasks such as quality control monitoring and statistical reporting.</li>
-			    <li>Achieved the highest performance evaluation rating among Knowledge Base peers in TalentView  (Lawson’s internal 360-degree rating system).</li>
-			    <li>Received the Lawson Outstanding Contribution award and the Eureka award related to documentation productivity and innovation.</li>
-			    </ul>
-			</div>
-		</div>
-	  </div>
-	  <h3>Professional trainings</h3>
-	  <div>
-	  <ul>
-    <li>ITIL V3 Foundation Certification<br><span class="traindate">Pasig, Manila</span></li>
-		<li>Technical Writing and Game Technology Training<br><span class="traindate">Electronic Arts headquarters, California</span></li>
-		<li>Dale Carnegie Personality Development Training<br><span class="traindate">Lawson Philippines</span></li>
-		<li>Nortel Networks Cellular Technology Training<br><span class="traindate">ESS Manufacturing Company Inc, Philippines</span></li>
-		<li>Process Engineering Training<br><span class="traindate">Photocircuits Philippines</span></li>
-		<li>Front-End Engineering Training<br><span class="traindate">Photocircuits Philippines</span></li>
-		<li>Six-Sigma White Belt Training<br><span class="traindate">Samsung Electronics Philippines</span></li>
-		<li>Optical Pick-up Handling and ESD Prevention<br><span class="traindate">Samsung Electronics Philippines</span></li>
-		</ul>
-	  </div>
-	  <h3>Education and professional examinations</h3>
-	  <div>
-	  <ul>
-		<li>Mapua Institute of Technology<br><span class="traindate">Bachelor of Science in Electronics and Communications Engineering<br>Graduated January 2004</span></li>
-		<li>Professional Regulatory Commission<br><span class="traindate">Electronics and Communications Engineering Licensure Examination<br>Passed April 2004</span></li>
-		<li>Basic Spoken Chinese Level 1<br><span class="traindate">Ateneo de Manila Confucius Institute<br>Completed September 2010</span></li>
-	  </ul>
-	  </div>
-	  <h3>Professional and academic awards</h3>
-	  <div>
-	  <ul>
-		<li>Finalist, National Institute of Singapore's Quantum Shorts Short Story Writing Contest<br><span class="traindate">2015</span></li>
-		<li>Lawson Outstanding Contribution Award<br><span class="traindate">2008</span></li>
-		<li>Lawson Eureka Award<br><span class="traindate">Joint winner, 2008</span></li>
-		<li>Highest Lawson TalentView performance evaluation rating<br><span class="traindate">2008</span></li>
-		<li>1st place, short story writing contest sponsored by The New Builder<br><span class="traindate">2002 and 2003</span></li>
-	  </ul>
-	  </div>
-	  <h3>Software and Concepts Skill Set</h3>
-	  <div id="contentBox" style="margin:0px auto;">
-    	 <div id="column1" style="float:left; margin:0; width:33%">
-		 <p>Publishing</p>
-		 <ul>
-			<li>MadCap Flare</li>
-			<li>Adobe Robohelp</li>
-			<li>AuthorIT</li>
-			<li>Arbortext Epic Editor</li>
-			<li>Microsoft Visio</li>
-			<li>Microsoft SharePoint</li>
-			<li>Adobe Photoshop</li>
-			<li>Microsoft Infopath</li>
-			<li>DITA</li>
-	     </ul>
-		 </div>
-		 <div id="column2" style="float:left; margin:0; width:33%;">
-		 <p>Programming</p>
-		 <ul>
-			<li>Delphi/Pascal</li>
-			<li>SQL Server Management Studio</li>
-			<li>Multilizer Translation tool</li>
-			<li>Python</li>
-			<li>Agile Development</li>
-			<li>HTML</li>
-			<li>VBA</li>
-			<li>Visual Studio</li>
-			<li>Team Foundation Server</li>
-			<li>JavaScript</li>
+  <!-- Fixed navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-logo">JC</div>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section id="hero" class="section hero-section">
+    <div class="container">
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="hero-title">Jesus Chua</h1>
+        <h2 class="hero-subtitle">IT Analysis & Development Consultant</h2>
+        <p class="hero-description">Turning complex data into actionable insights and elegant solutions</p>
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+        <img src="resources/images/profile.JPG" alt="Jesus Chua" class="profile-hero">
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll down</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text" data-aos="fade-right">
+          <p>I'm a seasoned IT professional with extensive experience in analysis, documentation, and development. My career spans roles from technical writing to business process architecture, with a focus on translating complex requirements into clear solutions.</p>
+          <p>With a background in Electronics and Communications Engineering and an ITIL certification, I bring both technical depth and structured methodology to my work.</p>
+          <div class="about-stats">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Companies</span>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image" data-aos="fade-left">
+          <div class="image-stack">
+            <img src="resources/images/banner1.png" alt="Work environment" class="stack-image stack-image-1">
+            <img src="resources/images/banner2.png" alt="Work environment" class="stack-image stack-image-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	     </ul>
-		 </div>
-	  </div>
-	</div>
-  </div>
-  <div id="tabs-2">
-    <p>In presenting these samples, I also provide information about the tools, environment, and the general context surrounding their creation. Where necessary, I redact copyrighted terms and other sensitive intellectual property.</p>
-	<p>The Data Migration and VBA Projects sections are in progress. I will be updating the available files in due time, but if you require samples from this type of work immediately, please inform me. See the Contact Details tab.</p>
-	<div id="accordion2">
-	<h3>Data Gathering, Analysis, and Visualization</h3>
-	  <div>
-	  <div class = "highcont">
-			<p class="workplace">Interactive Graph of Philippine Rice Consumption </p></div>
-		<ul>
-			<p>Large datasets can be compiled, analyzed, and presented to help organizations make more informed decisions. In this example, I use publicly-available data to present the historical trend of rice consumption in the Philippines.</p>
-			<div>
-				<div id="chart" width="auto%" align="center" valign="top"></div>
-			</div>
-      <p>I used the following technologies for this graph:</p>
-      <ul>
-        <li>HTML - as a platform for development</li>
-        <li>Javascript - programming language that works with most browsers</li>
-        <li>JSON - as a medium for transporting data from GoogleSheets to the browser</li>
-        <li>C3 and D3 - javascript libraries that enable fast and interactive visualization</li>
-      </ul>
-	  <p></p>
-		<div class = "highcont">
-	  		<p class="workplace">Forbes List vs Wikipedia Pageviews</p></div>
-		<p></p>
-		<iframe src= "resources/documents/Forbes List vs Wikipedia Pageviews.pdf" width="100%" height="500px">
-		</iframe>
-	</div>
-	 <h3>Requirements Gathering</h3>
-	  <div>
-	  <div class = "highcont">
-			<p class="workplace">Simple UI Change - Company B Data Migration Project</p></div>
-		<ul>
-		  <p>This change request represents a typical scenario in any organization. There is a principal project to standardize and merge the intellectual properties and databases of two companies. </p>
-		  <p>As a business process architect, I help divide the principal change into into smaller, focused, and SMART change requests. Notice that all requirements are subdivided into specific categories like UI requirements, Functional requirements, Performance requirements and so on. Notice also that while this specific change request is small in scope, the overview section ties it up with the larger organization-wide change.</p>
-		  <p>Click the image to view the change request document.</p>
-			<div>
-			<a href="resources/documents/Change Request 001 - Customer Data Migration - Update of Customer Address Fields UI.pdf" target="_blank"><img src="resources/images/banner2.png" width="50%" border="5px" style= "border-color: #FF5800"></a>
-			</div>
-	  </div>
-	<h3>User guides</h3>
-	  <div>
-	  <table>
-	  <tr>
-	  <td width="75%">
-		<div class = "highcont">
-			<p class="workplace">The Misys Branch Teller User Guide</p></div>
-			<p>
-			Software user guides describe the relevant processes that End-users perform. In this example, the End-users are bank tellers, and the processes are bank transactions that range from trivial to complex.
-			</p>
-			<p>
-			Click the thumbnail to open the document. If you encounter issues opening documents from within the browser, right-click and select "Save target as..."
-			</p>
-			<p><strong>Level of involvement</strong></p>
-			<p>
-			This project required me to be embedded within the development team. I often met and consulted with the following experts:</p>
-			<ul>
-			<li>Business analysts who provide information about application functionalities. </li>
-			<li>Developers who provide updates on functionality or user interface changes.</li>
-			<li>Testers who provide the latest functioning builds and bug reports.</li>
-			</ul>
-			<p><strong>Tools</strong></p>
-			<p>
-			I used the following applications and environments:</p>
-			<ul>
-			<li>Robohelp, utilizing custom css to publish the html content into a preliminary Word document.</li>
-			<li>Macro-enabled Microsoft Word template, utilizing custom macros and fields to reformat, re-number, and apply headers and footers to sections, and to conform to company-wide template requirements.</li>
-			<li>Adobe Acrobat Professional, to transform the Word files into PDF, and to apply PDF-opening defaults.</li>
-			</ul>
-		</td>
-		<td width="auto%" align="center" valign="top">
-		<div>
-			<a href="resources/documents/Selected Topics from Branch Teller User Guide_Redacted.pdf" target="_blank"><img src="resources/images/Selected Topics from Branch Teller User Guide_Redacted.png" width="50%" border="5px" style= "border-color: #FF5800"></a>
-		</div>
-	    </td>
-	  </tr>
-	  </table>
-	  </div>
+  <!-- Experience Timeline Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Professional Journey</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="timeline" data-aos="fade-up">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2020 - Present</div>
+          <div class="timeline-content">
+            <h3>IT Consultant</h3>
+            <h4>Nobia Denmark A/S</h4>
+            <p>Analysis and estimation of change requests, quality assurance, process mapping, and 2nd level support for incidents and problems.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015 - 2020</div>
+          <div class="timeline-content">
+            <h3>Business Process Architect</h3>
+            <h4>Global Process Managers, Inc.</h4>
+            <p>Documented change requests, maintained development documentation, and performed user acceptance testing.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2012 - 2015</div>
+          <div class="timeline-content">
+            <h3>Consultant Technical Writer</h3>
+            <h4>Accenture Manila Delivery Center</h4>
+            <p>Created and reviewed development methodology documents, produced sprint-related reports, and developed training modules.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2011 - 2012</div>
+          <div class="timeline-content">
+            <h3>Senior Technical Writer</h3>
+            <h4>Misys Philippines</h4>
+            <p>Developed documentation plans, coordinated with development teams for technical accuracy, and reviewed banking documentation.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2009 - 2011</div>
+          <div class="timeline-content">
+            <h3>Senior Technical Writer for Electronic Arts Project</h3>
+            <h4>ESS Manufacturing Company Incorporated (EMCI)</h4>
+            <p>Gathered and organized network information for online game functionalities, conducted training sessions, and attended change management meetings.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2007 - 2009</div>
+          <div class="timeline-content">
+            <h3>Technical Writer</h3>
+            <h4>Lawson Philippines Solutions and Services Center (PSSC)</h4>
+            <p>Documented customer cases, specialized in Supply Chain Management, conducted peer-reviews, and implemented language standards revisions.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="view-more-container" data-aos="fade-up">
+        <button class="btn btn-outline view-more-btn" id="viewMoreExperience">View more experience</button>
+      </div>
+    </div>
+  </section>
 
-	  <h3>Guidelines</h3>
-	  <div>
-	  <table>
-	  <tr>
-	  <td width="75%">
-	  <div class = "highcont">
-			<p class="workplace">The Accenture RDBMS Guideline</p></div>
-	  <div>
-		<p>
-		Consulting firms like Accenture and its subsidiaries employ guideline documentation to help keep their development teams informed on regulatory and company policies. One drawback of guidelines documentation is that developers find it hard to read or re-read lengthy expositions on topics they are already familiar with.
-		</p>
-		<p>
-		I performed the guideline update by dividing previously disorganized content into smaller sections, offering links to recently updated topics upfront, removing (with consultation) obsolete or redundant sections, and connecting related topics through hyperlinks.
-		</p>
-		<p>
-		This is a small representative sample of the information security updates applied on existing guidelines. Furthermore, the presentation is not true to form because the content is intended to be consumed through the custom web application that our team maintains. I chose not to re-produce the web application in this demo, focusing instead on the content.
-		</p>
-		<p><strong>Level of involvement</strong></p>
-			<p>
-			This project required light to medium involvement. Often involving just me and two experts discussing the changes over email.</p>
-		</div>
-		</td>
-		<td width="auto%" align="center" valign="top">
-		<div>
-			<a href="resources/documents/RDBMS Security Guideline Update.docx" target="_blank"><img src="resources/images/RDBMS Guidelines thumbnail.png" width="50%" border="5px" style= "border-color: #FF5800"></a>
-		</div>
-	    </td>
-	  </tr>
-	  </table>
-	  </div>
-	  <h3>VBA Projects</h3>
-	  <div>
-	  <div class = "highcont">
-			<p class="workplace">Small Projects for Automating Repetetive Documentation Tasks</p></div>
-		<p>
-		I create VBA macros that range from simple to medium-complexity:
-		</p>
-		<ul>
-		  <li>Universal Search and Replace</li>
-		  <li>Data Input, Summarization, and Graph Visualization</li>
-		  <li>Microsoft Word Rebranding (applying new styles and template settings to legacy Word documents) </li>
-		</ul>
-		<p>
-		Let me know if you need samples of my work in this area.
-		</p>
-	  </div>
+  <!-- Skills Section -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category" data-aos="fade-up">
+          <h3 class="category-title">
+            <i class="fas fa-book"></i>
+            Publishing & Documentation
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-name">MadCap Flare</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Adobe RoboHelp</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Microsoft SharePoint</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">AuthorIT</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">DITA</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="category-title">
+            <i class="fas fa-code"></i>
+            Programming & Development
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-name">HTML/CSS/JavaScript</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Python</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">SQL</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Delphi/Pascal</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">VBA</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 65%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="category-title">
+            <i class="fas fa-chart-line"></i>
+            Analysis & Methodology
+          </h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-name">Agile Development</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">ITIL Framework</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Data Analysis</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 83%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Process Mapping</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 78%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Quality Assurance</div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	  <h3>About this website</h3>
-	  <div>
-		<p>
-		This website features jQuery accordions nested inside tabs. jQuery UI animations are light-weight, efficient, and relatively easy to implement. It enables the extension of screen real estate while maintaining visual simplicity and order.
-		</p>
-		<p><strong>Tools</strong></p>
-			<p>
-			I used the following applications and environments:</p>
-				<ul>
-				<li>Microsoft Office Suite to create presentations and analyze data.</li>
-				<li>Notepad++ to write HTML code.</li>
-				<li>Github to publish the website.</li>
-				<li>Adobe Acrobat Professional to redact sample PDFs.</li>
-				</ul>
-	  </div>
-	</div>
-  </div>
-  <div id="tabs-3">
-	<div style="text-align:center;">
-  <div class="highcont">
-  <p class="workplace">Parallax Effect</p>
-  </div>
-  <p>Parallax in common terms is the apparent faster movement of objects that are nearer the observer. This demo website explains how this phenomenon is used.</p>
-	<a href="https://jesuschua.github.io/parallax/parallax_demo.html" target="_blank">https://jesuschua.github.io/parallax/parallax_demo.html</a>
+  <!-- Work Samples Section -->
+  <section id="work" class="section work-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="work-filters" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="data">Data Analysis</button>
+        <button class="filter-btn" data-filter="documentation">Documentation</button>
+        <button class="filter-btn" data-filter="development">Development</button>
+      </div>
+      
+      <div class="work-grid">
+        <div class="work-item" data-category="data" data-aos="fade-up">
+          <div class="work-image">
+            <img src="resources/images/data-visualization.jpg" alt="Data Visualization">
+            <div class="work-overlay">
+              <div class="work-overlay-content">
+                <h3>Philippine Rice Consumption Analysis</h3>
+                <p>Interactive data visualization showing trends in food utilization</p>
+                <a href="#" class="btn btn-small">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="work-item" data-category="documentation" data-aos="fade-up" data-aos-delay="100">
+          <div class="work-image">
+            <img src="resources/images/documentation.jpg" alt="Documentation">
+            <div class="work-overlay">
+              <div class="work-overlay-content">
+                <h3>Technical Documentation Framework</h3>
+                <p>Standardized approach to creating consistent technical documentation</p>
+                <a href="#" class="btn btn-small">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="work-item" data-category="development" data-aos="fade-up" data-aos-delay="200">
+          <div class="work-image">
+            <img src="resources/images/parallax-demo.jpg" alt="Parallax Website">
+            <div class="work-overlay">
+              <div class="work-overlay-content">
+                <h3>Parallax Effect Website</h3>
+                <p>Interactive demonstration of parallax scrolling techniques</p>
+                <a href="https://jesuschua.github.io/parallax/parallax_demo.html" target="_blank" class="btn btn-small">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Additional work items would follow the same pattern -->
+      </div>
+    </div>
+  </section>
 
+  <!-- Data Visualization Section -->
+  <section id="visualization" class="section visualization-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Data Visualization</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="visualization-container" data-aos="fade-up">
+        <div id="chart" class="chart-container"></div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:jesuschuajr@gmail.com">jesuschuajr@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h3>Phone</h3>
+              <p>(+45) 22 12 63 52</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Location</h3>
+              <p>Denmark (GMT+2)</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-file-pdf"></i>
+            <div>
+              <h3>Resume</h3>
+              <a href="resources/documents/Jesus Chua Jr - CV.pdf" target="_blank">Download CV</a>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form" data-aos="fade-left">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="text" id="subject" name="subject" placeholder="Subject">
+            </div>
+            
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</div>
-  </div>
-  <div id="tabs-4">
-	<div style="text-align:center;">
-  <img src="resources/images/profile.JPG" alt="author/developer's recent pic" width="500">
-  <p></p>
-	<a style="text-decoration: none; color: #FF5800" href="mailto:jesuschuajr@gmail.com" target="_blank">jesuschuajr@gmail.com</a>
-	<p>(+45) 22 12 63 52</p>
-	<p>Denmark (GMT+2)</p>
-	<a href="resources/documents/Jesus Chua Jr - CV.pdf" target="_blank">Download or view my resumé in PDF</a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">JC</div>
+        <p class="copyright">&copy; 2023 Jesus Hernandez Chua Jr - All Rights Reserved</p>
+        <div class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-
-
-	</div>
-  </div>
-
-</div>
+  <!-- Back to top button -->
+  <button id="backToTop" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 </body>
 </html>
-<!--hello pugi-->
