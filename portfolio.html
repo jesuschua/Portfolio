@@ -51,7 +51,10 @@
       //console.log(arr_yearlabel);
 
       var chart = c3.generate({
-          size:{height: 520, width: 1200},
+          size: {
+              height: 520,
+              // Remove width to let it adapt to container
+          },
           bindto: '#chart',
           data: {
             //x: arr_yearlabel,

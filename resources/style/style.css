@@ -565,9 +565,9 @@ input[type=text] {
 
 /* Add this to your resources/style/style.css file */
 #tabs {
-    max-width: 1200px; /* Set your preferred maximum width */
-    margin: 0 auto; /* Center the tabs container */
-    width: 80%; /* Use percentage for responsiveness */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 60%;
 }
 
 /* Control the width of tab panels */
