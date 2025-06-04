@@ -562,3 +562,23 @@ input[type=text] {
 	top: 0;
 	left: 0;
 }
+
+/* Add this to your resources/style/style.css file */
+#tabs {
+    max-width: 1200px; /* Set your preferred maximum width */
+    margin: 0 auto; /* Center the tabs container */
+    width: 90%; /* Use percentage for responsiveness */
+}
+
+/* Control the width of tab panels */
+.ui-tabs .ui-tabs-panel {
+    padding: 1em;
+    overflow: auto; /* Prevents content from breaking layout */
+}
+
+/* Make tabs responsive */
+@media screen and (max-width: 768px) {
+    #tabs {
+        width: 95%;
+    }
+}
