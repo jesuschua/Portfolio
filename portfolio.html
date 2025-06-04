@@ -26,86 +26,6 @@
     $( "#tabs" ).tabs();
   });
   </script>
-  <script>
-    // ID of the Google Spreadsheet
-    var spreadsheetID = "1Veb2vl5EtgAjxVQ9eU-o-RSrgiOMmxUxAh5mQADQP-0";
-
-    // Make sure it is public or set to Anyone with link can view
-    var url1 = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-
-    // make JSON call to Google Data API
-    $.getJSON(url1, function(data) {
-      var arr_yearlabel = []
-      var arr_percentfoodutil = ['% Food Utilization']
-      var arr_foodutil = ['Food Utilization']
-      var arr_nonfoodutil = ['Non-Food Utilization']
-      var arr_grosupply = ['Gross Supply']
-      for (var j = 0; j < data.feed.entry.length; j++){
-        arr_yearlabel.push(data.feed.entry[j].gsx$year.$t)
-        arr_percentfoodutil.push(data.feed.entry[j].gsx$percentfoodutilization.$t)
-        arr_foodutil.push(data.feed.entry[j].gsx$foodutilization.$t)
-        arr_nonfoodutil.push(data.feed.entry[j].gsx$nonfoodutilization.$t)
-        arr_grosupply.push(data.feed.entry[j].gsx$grosssupply.$t)
-      }
-      //console.log(data.feed.entry);
-      //console.log(arr_yearlabel);
-
-      var chart = c3.generate({
-          size: {
-              height: 520,
-              // Remove width to let it adapt to container
-          },
-          bindto: '#chart',
-          data: {
-            //x: arr_yearlabel,
-            columns: [
-              arr_foodutil,
-              arr_nonfoodutil,
-              arr_grosupply,
-              arr_percentfoodutil,
-            ],
-            type: 'bar',
-            groups: [
-            ['Food Utilization', 'Non-Food Utilization']
-            ],
-            axes: {
-              '% Food Utilization': 'y2',
-              'Food Utilization': 'y',
-              'Non-Food Utilization': 'y',
-              'Gross Supply': 'y',
-            },
-            types: {
-              '% Food Utilization': 'spline',
-              'Food Utilization': 'bar',
-              'Non-Food Utilization': 'bar',
-              'Gross Supply': 'spline'// ADD
-            }
-          },
-          axis: {
-            x: {
-              type: 'category',
-              categories: arr_yearlabel,
-              },
-            y: {
-              label: {
-                text: 'Metric Tons',
-                position: 'outer-middle'
-              }
-            },
-            y2: {
-              show: true,
-              min: 10,
-              max: 90,
-              label: {
-                text: 'Percent Utilization',
-                position: 'outer-middle'
-              }
-            }
-          }
-      });
-    });
-
-  </script>
 </head>
 <body>
 
@@ -458,29 +378,14 @@
 			<p>Parallax in common terms is the apparent faster movement of objects that are nearer the observer. This demo website explains how this phenomenon is used.</p>
 			<a href="https://jesuschua.github.io/parallax/parallax_demo.html" target="_blank">https://jesuschua.github.io/parallax/parallax_demo.html</a>
 		</div>
-		<h3>Data Gathering, Analysis, and Google Sheets Site Integration</h3>
+		<h3>Data Gathering and Analysis</h3>
 	  <div>
-		<div class = "highcont">
-				<p class="workplace">Interactive Graph of Philippine Rice Consumption </p></div>
-			<ul>
-				<p>Large datasets can be compiled, analyzed, and presented to help organizations make more informed decisions. In this example, I use publicly-available data to present the historical trend of rice consumption in the Philippines.</p>
-				<div>
-					<div id="chart" width="auto%" align="center" valign="top"></div>
-				</div>
-		<p>I used the following technologies for this graph:</p>
-		<ul>
-			<li>HTML - as a platform for development</li>
-			<li>Javascript - programming language that works with most browsers</li>
-			<li>JSON - as a medium for transporting data from GoogleSheets to the browser</li>
-			<li>C3 and D3 - javascript libraries that enable fast and interactive visualization</li>
-		</ul>
-		<p></p>
 			<div class = "highcont">
 				<p class="workplace">Forbes List vs Wikipedia Pageviews</p></div>
 			<p></p>
 			<iframe src= "resources/documents/Forbes List vs Wikipedia Pageviews.pdf" width="100%" height="500px">
 			</iframe>
-	</div>
+	  </div>
 			<h3>Archery simulation - 2D</h3>
 		<div>
 			<div class="preview-container">
