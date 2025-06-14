@@ -1,0 +1,114 @@
+{
+  "personal": {
+    "name": "Jesus Hernandez Chua Jr",
+    "title": "Process & Test Automation Specialist",
+    "bio": "IT Consultant with 15+ years of experience transforming complex business processes through intelligent automation. Specialized in test automation frameworks, process optimization, and quality assurance in enterprise environments.",
+    "location": "Denmark (GMT+2)",
+    "phone": "(+45) 22 12 63 52",
+    "email": "jesuschuajr@gmail.com",
+    "resume": "resources/documents/Jesus Chua Jr - CV.pdf",
+    "profileImage": "resources/images/profile.JPG"
+  },
+  "skills": {
+    "automation": ["Python", "VBA", "JavaScript", "SQL", "Test Automation", "Selenium"],
+    "development": ["Visual Studio", "TFS", "Git", "Agile", "CI/CD", "PowerBI"],
+    "business": ["Process Mapping", "Requirements", "ITIL", "Six Sigma", "Documentation", "Quality Assurance"],
+    "platforms": ["SharePoint", "Azure", "Office 365", "SQL Server", "Windows", "Linux"]
+  },
+  "experience": [
+    {
+      "title": "IT Consultant",
+      "company": "Nobia Denmark A/S",
+      "duration": "Feb 2020 - Present",
+      "description": "Leading automation initiatives and quality assurance strategies for enterprise-level applications. Focus on process optimization and test automation framework development.",
+      "achievements": [
+        "Implemented comprehensive test automation frameworks, reducing manual testing time by 60%",
+        "Established automated quality assurance protocols for mission-critical applications",
+        "Led analysis and estimation of complex change requests with automation focus",
+        "Created automated reporting systems for real-time process monitoring",
+        "Developed automated testing environments and deployment procedures"
+      ]
+    },
+    {
+      "title": "Business Process Architect",
+      "company": "Global Process Managers, Inc.",
+      "duration": "Feb 2015 - Jan 2020",
+      "description": "Specialized in designing automated workflows for complex business processes and data migration projects. Focused on sprint management automation and UAT procedures.",
+      "achievements": [
+        "Designed automated workflows for data migration and business process optimization",
+        "Automated sprint documentation and tracking systems, improving efficiency by 40%",
+        "Developed comprehensive User Acceptance Testing procedures and automation",
+        "Created self-updating documentation systems using VBA and web technologies",
+        "Established automated language translation processing workflows"
+      ]
+    },
+    {
+      "title": "Technical Consultant",
+      "company": "Accenture Manila Delivery Center",
+      "duration": "Sep 2012 - Feb 2015",
+      "description": "Developed automation solutions for technical documentation and process management. Created custom SharePoint applications and VBA automation tools.",
+      "achievements": [
+        "Developed complex VBA macros for automated task processing and reporting",
+        "Built automated SharePoint workflow systems and custom web applications",
+        "Created automated documentation generation and update systems",
+        "Developed interactive training modules with automated assessment capabilities",
+        "Implemented process automation tools that increased team productivity"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Fluid Dynamics Simulation",
+      "tech": "JavaScript • HTML5 • Physics Engine",
+      "description": "Advanced real-time fluid simulation with minimal abstraction layers, demonstrating complex algorithm optimization and performance monitoring techniques.",
+      "link": "https://jesuschua.github.io/lava_lamp/app/index.html",
+      "icon": "fas fa-water"
+    },
+    {
+      "title": "Automated Color Testing",
+      "tech": "JavaScript • Performance Analytics",
+      "description": "Interactive color recognition system with automated performance tracking and user skill assessment, showcasing test automation principles.",
+      "link": "https://jesuschua.github.io/htmll_colors/app/index.html",
+      "icon": "fas fa-palette"
+    },
+    {
+      "title": "Data Analysis Dashboard",
+      "tech": "Excel • VBA • Statistical Analysis",
+      "description": "Automated data collection and analysis system comparing Forbes rankings with Wikipedia engagement metrics, featuring automated reporting.",
+      "link": "resources/documents/Forbes List vs Wikipedia Pageviews.pdf",
+      "icon": "fas fa-chart-bar"
+    },
+    {
+      "title": "Physics Simulation Suite",
+      "tech": "JavaScript • Canvas API • Physics",
+      "description": "Collection of physics-based simulations including archery and golf games, demonstrating real-time optimization and performance monitoring.",
+      "link": "https://jesuschua.github.io/archery/app/index.html",
+      "icon": "fas fa-gamepad"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "ITIL V3 Foundation",
+      "issuer": "IT Service Management"
+    },
+    {
+      "title": "Licensed Electronics Engineer",
+      "issuer": "Professional Regulatory Commission"
+    },
+    {
+      "title": "Six Sigma White Belt",
+      "issuer": "Process Improvement"
+    },
+    {
+      "title": "BS Electronics & Communications",
+      "issuer": "Mapua Institute of Technology"
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-06-14",
+    "author": "Jesus Hernandez Chua Jr",
+    "description": "Personal portfolio showcasing process and test automation expertise",
+    "keywords": "automation, testing, process optimization, quality assurance, VBA, Python, JavaScript"
+  }
+}
