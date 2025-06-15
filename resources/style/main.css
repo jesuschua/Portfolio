@@ -144,6 +144,10 @@ main {
     margin: 0 auto;
 }
 
+.highlight-text {
+    text-align: justify;
+}
+
 .expertise-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
