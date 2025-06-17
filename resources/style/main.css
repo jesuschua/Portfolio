@@ -405,6 +405,10 @@ main {
     border: 1px solid var(--border-color);
 }
 
+.contact-section .section-title {
+    text-align: left;
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
