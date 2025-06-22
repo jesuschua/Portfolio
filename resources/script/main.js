@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize any interactive components
     initInteractiveElements();
+    
+    // Initialize project tabs
+    // Default to showing the technical projects tab
+    document.getElementById('tech-projects').classList.add('active');
+    document.querySelector('.tab-button').classList.add('active');
 });
 
 /**
@@ -157,4 +162,27 @@ function initLazyLoading() {
             imageObserver.observe(img);
         });
     }
+}
+
+/**
+ * Handle tab switching for project categories
+ */
+function showTab(tabId) {
+    // Hide all tab content
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Deactivate all tab buttons
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Show the selected tab content
+    document.getElementById(tabId).classList.add('active');
+    
+    // Activate the clicked tab button
+    event.currentTarget.classList.add('active');
 }

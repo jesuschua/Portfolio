@@ -10,10 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="resources/style/main.css">
+      <!-- Main Stylesheet -->    <link rel="stylesheet" href="resources/style/main.css">
     <!-- Animation Enhancements -->
     <link rel="stylesheet" href="resources/style/animations.css">
+    <!-- Markdown Viewer Styles -->
+    <link rel="stylesheet" href="resources/style/markdown-viewer.css">
 </head>
 <body>
     <header>
@@ -191,96 +192,133 @@
                         </ul>
                     </div>
                 </div>
-            </section>
-
-            <!-- Featured Projects Section -->
+            </section>            <!-- Featured Projects Section -->
             <section class="section">
                 <h2 class="section-title">Fun things I do for myself</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-water"></i>
+                
+                <!-- Project Category Tabs -->
+                <div class="project-tabs">
+                    <button class="tab-button active" onclick="showTab('tech-projects')">Technical Projects</button>
+                    <button class="tab-button" onclick="showTab('literary-works')">Short Stories</button>
+                </div>
+                
+                <!-- Technical Projects Tab -->
+                <div id="tech-projects" class="tab-content active">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div>
+                                    <h3 class="project-title">Fluid Dynamics Simulation</h3>
+                                    <div class="project-tech">JavaScript • HTML5</div>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="project-title">Fluid Dynamics Simulation</h3>
-                                <div class="project-tech">JavaScript • HTML5</div>
+                            <p class="project-description">
+                                Real-time fluid simulation with minimal abstraction layers.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://jesuschua.github.io/lava_lamp/app/index.html" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> View Demo
+                                </a>
                             </div>
                         </div>
-                        <p class="project-description">
-                            Real-time fluid simulation with minimal abstraction layers.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://jesuschua.github.io/lava_lamp/app/index.html" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Demo
-                            </a>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div>
+                                    <h3 class="project-title">Colorwise</h3>
+                                    <div class="project-tech">JavaScript</div>
+                                </div>
+                            </div>                        
+                            <p class="project-description">
+                                A fun game that tests one's ability to discern colors.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://jesuschua.github.io/htmll_colors/app/index.html" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Try Game
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div>
+                                    <h3 class="project-title">Forbes List vs Wikipedia Pageviews</h3>
+                                    <div class="project-tech">Jupyter • Python • Statistical Analysis</div>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                A small study comparing the Forbes Celebrity 100 List and how they can possibly correlate with Wikipedia pageviews.
+                                The analysis includes data visualization and statistical insights.
+                            </p>
+                            <div class="project-links">
+                                <a href="resources/documents/Forbes List vs Wikipedia Pageviews.pdf" target="_blank" class="project-link">
+                                    <i class="fas fa-file-pdf"></i> View Analysis
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <div>
+                                    <h3 class="project-title">General Physics Simulation</h3>
+                                    <div class="project-tech">JavaScript • Canvas API • Physics</div>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                Collection of physics-based simulations including archery and golf games, 
+                                demonstrating real-time optimization and performance monitoring.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://jesuschua.github.io/archery/app/index.html" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Try Archery Game
+                                </a>
+                            </div>                        
+                            <div class="project-links">
+                                <a href="https://jesuschua.github.io/golfer/app/index.html" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Try Golf Screen Saver
+                                </a>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-palette"></i>
+                </div>
+                
+                <!-- Literary Works Tab -->
+                <div id="literary-works" class="tab-content">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div>
+                                    <h3 class="project-title">The Global Factory</h3>
+                                    <div class="project-tech">Personal Essay • Memoir</div>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="project-title">Colorwise</h3>
-                                <div class="project-tech">JavaScript</div>
+                            <p class="project-description">
+                                The life I lived as a repair engineer in one of the most famous electronics manufacturers in the world, 
+                                and then as a technical sales staff pricing circuit boards for an American Company that completely collapsed
+                                trying to compete with cheaper and cheaper alternatives.
+                            </p>
+                            <div class="project-links">
+                                <a href="resources/documents/stories/Factory Worker.md" target="_blank" class="project-link">
+                                    <i class="fas fa-file-alt"></i> Read Story
+                                </a>
                             </div>
-                        </div>                        <p class="project-description">
-                            A fun game that tests one's ability to discern colors.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://jesuschua.github.io/htmll_colors/app/index.html" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Try Game
-                            </a>
                         </div>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <div>
-                                <h3 class="project-title">Forbes List vs Wikipedia Pageviews</h3>
-                                <div class="project-tech">Jupyter • Python • Statistical Analysis</div>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            A small study comparing the Forbes Celebrity 100 List and how they can possibly correlate with Wikipedia pageviews.
-                            The analysis includes data visualization and statistical insights.
-
-                        </p>
-                        <div class="project-links">
-                            <a href="resources/documents/Forbes List vs Wikipedia Pageviews.pdf" target="_blank" class="project-link">
-                                <i class="fas fa-file-pdf"></i> View Analysis
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <div>
-                                <h3 class="project-title">General Physics Simulation</h3>
-                                <div class="project-tech">JavaScript • Canvas API • Physics</div>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Collection of physics-based simulations including archery and golf games, 
-                            demonstrating real-time optimization and performance monitoring.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://jesuschua.github.io/archery/app/index.html" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Try Archery Game
-                            </a>
-                        </div>                        <div class="project-links">
-                            <a href="https://jesuschua.github.io/golfer/app/index.html" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Try Golf Screen Saver
-                            </a>
-                        </div>
                 </div>
             </section>
 
@@ -404,9 +442,9 @@
         <div class="container">
             <p>&copy; 2025 Jesus Hernandez Chua Jr. Built for GitHub Pages.</p>
         </div>
-    </footer>
-
-    <!-- Main JavaScript -->
+    </footer>    <!-- Main JavaScript -->
     <script src="resources/script/main.js"></script>
+    <!-- Markdown Viewer Script -->
+    <script src="resources/script/markdown-viewer.js"></script>
 </body>
 </html>
