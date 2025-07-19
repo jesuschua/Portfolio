@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_aZrrcEcQED6gkIcsi8LR_Q" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:collaboration id="_27785FB5-DA52-4117-B75A-4F74609C5DBD" name="Default Collaboration">
+    <bpmn2:participant id="_8FAF45B7-2D45-4806-95D2-F1774011F583" name="Pool Participant" processRef="simple"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="simple" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="simple" isExecutable="true" processType="Public">
+    <bpmn2:sequenceFlow id="_49A08EC4-C8DF-4A3B-8AF1-F25566AF36DF" sourceRef="_8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC" targetRef="_6126754E-B5E1-420F-8FA9-276D5FB898AD"/>
+    <bpmn2:sequenceFlow id="_70280E93-34A1-4A36-8685-EC5469F49AB0" sourceRef="_8BF33E26-5F69-4E7B-88B4-2EBF2AA86286" targetRef="_8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC"/>
+    <bpmn2:sequenceFlow id="_783A1DD1-999C-4CA3-85B9-D415F8C932A1" sourceRef="_2A36EED2-DF60-4E08-800A-11E34EE210C0" targetRef="_8BF33E26-5F69-4E7B-88B4-2EBF2AA86286"/>
+    <bpmn2:task id="_2A36EED2-DF60-4E08-800A-11E34EE210C0" name="Create/Register Customer">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Create/Register Customer]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_783A1DD1-999C-4CA3-85B9-D415F8C932A1</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="_8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC" name="Convert Design to Quote">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Convert Design to Quote]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_70280E93-34A1-4A36-8685-EC5469F49AB0</bpmn2:incoming>
+      <bpmn2:outgoing>_49A08EC4-C8DF-4A3B-8AF1-F25566AF36DF</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="_6126754E-B5E1-420F-8FA9-276D5FB898AD" name="Convert Quote to Order">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Convert Quote to Order]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_49A08EC4-C8DF-4A3B-8AF1-F25566AF36DF</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:task id="_8BF33E26-5F69-4E7B-88B4-2EBF2AA86286" name="Create Design">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Create Design]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_783A1DD1-999C-4CA3-85B9-D415F8C932A1</bpmn2:incoming>
+      <bpmn2:outgoing>_70280E93-34A1-4A36-8685-EC5469F49AB0</bpmn2:outgoing>
+    </bpmn2:task>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="simple">
+      <bpmndi:BPMNShape id="shape__8BF33E26-5F69-4E7B-88B4-2EBF2AA86286" bpmnElement="_8BF33E26-5F69-4E7B-88B4-2EBF2AA86286">
+        <dc:Bounds height="102" width="154" x="426" y="7"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__6126754E-B5E1-420F-8FA9-276D5FB898AD" bpmnElement="_6126754E-B5E1-420F-8FA9-276D5FB898AD">
+        <dc:Bounds height="102" width="154" x="899" y="7"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC" bpmnElement="_8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC">
+        <dc:Bounds height="102" width="154" x="668" y="7"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__2A36EED2-DF60-4E08-800A-11E34EE210C0" bpmnElement="_2A36EED2-DF60-4E08-800A-11E34EE210C0">
+        <dc:Bounds height="100" width="155" x="184" y="7"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__2A36EED2-DF60-4E08-800A-11E34EE210C0_to_shape__8BF33E26-5F69-4E7B-88B4-2EBF2AA86286" bpmnElement="_783A1DD1-999C-4CA3-85B9-D415F8C932A1">
+        <di:waypoint x="261.5" y="57"/>
+        <di:waypoint x="503" y="58"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__8BF33E26-5F69-4E7B-88B4-2EBF2AA86286_to_shape__8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC" bpmnElement="_70280E93-34A1-4A36-8685-EC5469F49AB0">
+        <di:waypoint x="503" y="58"/>
+        <di:waypoint x="745" y="58"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC_to_shape__6126754E-B5E1-420F-8FA9-276D5FB898AD" bpmnElement="_49A08EC4-C8DF-4A3B-8AF1-F25566AF36DF">
+        <di:waypoint x="822" y="58"/>
+        <di:waypoint x="976" y="58"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_8BF33E26-5F69-4E7B-88B4-2EBF2AA86286">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_6126754E-B5E1-420F-8FA9-276D5FB898AD">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_8DF5C9AE-3DA4-450F-811D-D4CA0202F9BC">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_2A36EED2-DF60-4E08-800A-11E34EE210C0">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_aZrrcEcQED6gkIcsi8LR_Q</bpmn2:source>
+    <bpmn2:target>_aZrrcEcQED6gkIcsi8LR_Q</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
