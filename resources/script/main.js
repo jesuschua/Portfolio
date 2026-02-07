@@ -4,63 +4,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for internal links
-    initSmoothScroll();
-    
-    // Animate elements on scroll
-    initScrollAnimations();
-    
     // Initialize any interactive components
     initInteractiveElements();
 });
-
-/**
- * Initialize smooth scrolling for anchor links
- */
-function initSmoothScroll() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-/**
- * Initialize scroll-triggered animations
- */
-function initScrollAnimations() {
-    // Create intersection observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections and cards
-    const animatedElements = document.querySelectorAll('.section, .expertise-card, .experience-item, .project-card');
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-}
 
 /**
  * Initialize interactive elements
